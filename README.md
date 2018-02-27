@@ -11,10 +11,7 @@
 ## 3. client_id로 initialize 한 후에 새로운 인증 token을 발급 받습니다.
 ```javascript
 instead.init('client_id');
-```
-#### instead.init의 원리
-<hr/>
-```javascript
+
 window.INSTEAD.prototype.init = function(client_id) {
     var req = new XMLHttpRequest();
     req.open("POST", API + "/token", true);
@@ -29,6 +26,11 @@ window.INSTEAD.prototype.init = function(client_id) {
         "client_id": client_id
     }));
 }
+```
+#### instead.init의 원리
+<hr/>
+```javascript
+
 ```
 
 ## 4. 아이템 정보 및 요청자 정보 등을 포함하여 요청하면 끝납니다.
