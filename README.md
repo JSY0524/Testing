@@ -30,6 +30,7 @@ window.INSTEAD.prototype.init = function(client_id) {
     }));
 }
 ```
+
 ## 4. 아이템 정보 및 요청자 정보 등을 포함하여 요청하면 끝납니다.
 ```javascript
 instead.requestPay({ 
