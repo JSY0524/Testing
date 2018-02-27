@@ -15,20 +15,20 @@ instead.init('client_id');
 #### instead.init의 원리
 <hr/>
 ```javascript
-    window.INSTEAD.prototype.init = function(client_id) {
-        var req = new XMLHttpRequest();
-        req.open("POST", API + "/token", true);
-        req.setRequestHeader("Content-Type", "application/json");
-        var self = this;
-        req.onreadystatechange = function() {
-            if (req.readyState == 4 && req.status == 200) {
-                self.access_token = JSON.parse(req.responseText).access_token;
-            }
-        };
-        req.send(JSON.stringify({
-            "client_id": client_id
-        }));
-    }
+window.INSTEAD.prototype.init = function(client_id) {
+    var req = new XMLHttpRequest();
+    req.open("POST", API + "/token", true);
+    req.setRequestHeader("Content-Type", "application/json");
+    var self = this;
+    req.onreadystatechange = function() {
+        if (req.readyState == 4 && req.status == 200) {
+            self.access_token = JSON.parse(req.responseText).access_token;
+        }
+    };
+    req.send(JSON.stringify({
+        "client_id": client_id
+    }));
+}
 ```
 ## 4. 아이템 정보 및 요청자 정보 등을 포함하여 요청하면 끝납니다.
 ```javascript
