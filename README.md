@@ -3,7 +3,6 @@
 ## 1. 인스테드 [관리자 페이지](http://insteadadmin.hssa.me)에서 가맹점등록
 
 ## 2. instead javascript import
-#### instead.co.kr 서버로 연결하기 위해 아래의 script를 입력합니다.
 ```html
 <script src="instead-guide/instead-1.0.0.js"></script>
 ```
@@ -12,27 +11,12 @@
 ```javascript
 instead.init('client_id');
 ```
-#### instead.init의 원리
 <hr/>
-
 ```javascript
-window.INSTEAD.prototype.init = function(client_id) {
-    var req = new XMLHttpRequest();
-    req.open("POST", API + "/token", true);
-    req.setRequestHeader("Content-Type", "application/json");
-    var self = this;
-    req.onreadystatechange = function() {
-        if (req.readyState == 4 && req.status == 200) {
-            self.access_token = JSON.parse(req.responseText).access_token;
-        }
-    };
-    req.send(JSON.stringify({
-        "client_id": client_id
-    }));
-}
+this.access_token = JSON.parse(req.responseText).access_token;
 ```
 
-## 4. 아이템 정보 및 요청자 정보 등을 포함하여 요청하면 끝납니다.
+## 4. 아이템 정보 및 요청자 정보와 token을 server로 보내면 session_id를 발급 받습니다.
 ```javascript
 instead.requestPay({ 
     name: "홍길동", 
@@ -54,6 +38,13 @@ instead.requestPay({
     request_cb: function(res) { console.log(res); } 
 });
 ```
+<hr/>
+```javascript
+req.setRequestHeader("Authorization", "Bearer" + this.access_token);
+this.session_id = JSON.parse(req.responseText).session_id;
+```
+
+## 5. 결제 통보 받을 URL을 발급 받습니다.
 
 # REST API
 결제 후 정보를 확인하고 정상처리여부를 검증할 수 있도록 REST API를 제공하고 있습니다.
