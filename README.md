@@ -14,6 +14,7 @@ instead.init('client_id');
 <hr/>
 
 ```javascript
+var req = new XMLHttpRequest();
 this.access_token = null;
 this.access_token = JSON.parse(req.responseText).access_token;
 ```
@@ -43,6 +44,11 @@ instead.requestPay({
 <hr/>
 
 ```javascript
+var req = new XMLHttpRequest();
+if(!this.access_token){
+    alert("먼저 token을 발급 받으세요.");
+    return;
+}
 req.setRequestHeader("Authorization", "Bearer" + this.access_token);
 this.session_id = JSON.parse(req.responseText).session_id;
 ```
