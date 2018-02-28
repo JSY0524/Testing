@@ -14,6 +14,7 @@ instead.init('client_id');
 <hr/>
 
 ```javascript
+this.access_token = null;
 this.access_token = JSON.parse(req.responseText).access_token;
 ```
 
