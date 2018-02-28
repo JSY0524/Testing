@@ -12,6 +12,7 @@
 instead.init('client_id');
 ```
 <hr/>
+
 ```javascript
 this.access_token = JSON.parse(req.responseText).access_token;
 ```
@@ -39,6 +40,7 @@ instead.requestPay({
 });
 ```
 <hr/>
+
 ```javascript
 req.setRequestHeader("Authorization", "Bearer" + this.access_token);
 this.session_id = JSON.parse(req.responseText).session_id;
