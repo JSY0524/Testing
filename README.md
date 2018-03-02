@@ -67,7 +67,7 @@ instead.requestPay({
 API = "https://instead.co.kr/api";
 window.open(API + '/pay?session_id='+this.session_id,...);
 ```
-#### URL은 session_id를 기반으로 구성되어 있으며 해당 session_id를 기반으로 구매정보를 가져옵니다.
+##### URL은 session_id를 기반으로 구성되어 있으며 해당 session_id를 기반으로 구매정보를 가져옵니다.
 
 # REST API
 결제 후 정보를 확인하고 정상처리여부를 검증할 수 있도록 REST API를 제공하고 있습니다.
