@@ -61,8 +61,6 @@ instead.requestPay({
 
 ## 4. 결제 통보 받을 URL을 발급 받습니다.
 
-<hr/>
-
 ##### <instead-1.0.0.js>
 
 ```javascript
