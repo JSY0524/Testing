@@ -1,5 +1,7 @@
 # 인스테드 연동가이드
 
+### 결제대행 서비스 인스테드를 연동하는 방법입니다.
+
 ##### “http://”, “ftp://”, “market://”과 같은 문자열을 url scheme이라 부릅니다. url scheme을 통해 앱이 실행되는 방식은 다음과 같습니다.
 
 ##### - 웹페이지에서 하이퍼링크 클릭 시 url scheme이 system에 전달됨
@@ -66,7 +68,7 @@ instead.requestPay({
 API = "https://instead.co.kr/api";
 window.open(API + '/pay?session_id='+this.session_id,...);
 ```
-#### URL session_id를 기반으로 구성되어 있으며 해당 API에서 data 정보를 가져옵니다.
+#### URL은 session_id를 기반으로 구성되어 있으며 해당 session_id를 기반으로 구매정보를 가져옵니다.
 
 # REST API
 결제 후 정보를 확인하고 정상처리여부를 검증할 수 있도록 REST API를 제공하고 있습니다.
