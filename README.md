@@ -19,10 +19,10 @@
 ```
 
 ## 3. init(client_id)을 호출합니다.
-* client_id: 거래할 고객의 고유 번호를 string 형식으로 전달
-* 해당 고유 번호를 가진 고객의 거래를 위한 초기화 작업을 진행합니다.
-* 고객 id는 {"client_id": client_id}의 JSON 형식으로 POST 메소드를 통해 전달됩니다.
-* 예시
+ * client_id: 거래할 고객의 고유 번호를 string 형식으로 전달
+ * 해당 고유 번호를 가진 고객의 거래를 위한 초기화 작업을 진행합니다.
+ * 고객 id는 {"client_id": client_id}의 JSON 형식으로 POST 메소드를 통해 전달됩니다.
+###### &nbsp; example
 ```javascript
 instead.init('client_id');
 ```
@@ -62,7 +62,7 @@ this.access_token = JSON.parse(req.responseText).access_token;
 | orderUrl | string | 각 상품의 웹 페이지 |
 
 
-* 예시
+###### &nbsp; example
 ```javascript
 INSTEAD.requestPay({
    	name: "김개똥",
