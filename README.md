@@ -10,7 +10,7 @@
 ##### - 해당 url scheme을 받을 수 있는 앱이 있다면 앱을 실행시키며 이 url을 함께 전달
 ##### - 앱이 실행되면서 url에 포함된 내용을 참조해서 특정 기능을 수행함
 
-## 1. 인스테드 [관리자 페이지](http://insteadadmin.hssa.me)에서 가맹점등록
+## 1. 인스테드 [관리자 페이지](https://admin.instead.co.kr/)에서 가맹점등록
 
 ## 2. instead javascript import 하기
 
@@ -68,6 +68,8 @@ API = "https://instead.co.kr/api";
 window.open(API + '/pay?session_id='+this.session_id,...);
 ```
 ##### URL은 session_id를 기반으로 구성되어 있으며 해당 session_id를 기반으로 구매정보를 가져옵니다.
+
+## 5. 결제 취소는 관리자페이지(https://admin.instead.co.kr/)에서 할 수 있습니다.
 
 # REST API
 결제 후 정보를 확인하고 정상처리여부를 검증할 수 있도록 REST API를 제공하고 있습니다.
