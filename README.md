@@ -23,14 +23,11 @@
 * 해당 고유 번호를 가진 고객의 거래를 위한 초기화 작업을 진행합니다.
 * 고객 id는 {"client_id": client_id}의 JSON 형식으로 POST 메소드를 통해 전달됩니다.
 * 예시
-    *
 ```javascript
 instead.init('client_id');
 ```
 
 ## 4. 새로운 인증 token을 발급 받습니다.
-
-##### <instead-1.0.0.js>
 
 ```javascript
 var req = new XMLHttpRequest();
@@ -106,15 +103,33 @@ INSTEAD.requestPay({
 
 ## 6. 결제 통보 받을 URL을 발급 받습니다.
 
-##### <instead-1.0.0.js>
-
 ```javascript
 API = "https://instead.co.kr/api";
 window.open(API + '/pay?session_id='+this.session_id,...);
 ```
 ##### URL은 session_id를 기반으로 구성되어 있으며 해당 session_id를 기반으로 구매정보를 가져옵니다.
 
-## 7. 결제가 완료되면 쇼핑몰 측에 결과를 전송합니다.
+## 7. 결제가 완료되면 쇼핑몰 측 서버에 결과를 전송합니다.
+
+```javascript
+function sendResult(requestNo, instead_uid, status){
+    let get_info = `
+        select  a.PAYMENT_URI 'payment_uri', b.MERCHANT_UID 'merchant_uid'  
+        from    STORE a, REQUEST b 
+        where   a.STORE_NO = b.STORE_NO 
+                and b.REQUEST_NO = ?`;
+    db.pool.query(get_info,[requestNo])
+    .then(data=>{
+        data = data[0];
+        let options = {
+            method: 'GET',
+            uri: data.payment_uri+`?instead_uid=${instead_uid}&merchant_uid=${data.merchant_uid}&pay_status=${status}`,
+            json: true
+        }
+        return rp(options);
+    })
+}
+```
 
 
 ## 8. 결제 취소는 [관리자페이지](https://admin.instead.co.kr/)에서 할 수 있습니다.
